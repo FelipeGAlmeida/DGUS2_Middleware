@@ -29,4 +29,4 @@ It's STILL IN DEVELOPMENT.
 
     Test function for DEBUG porposes.
     
- ### AGTechnologies and FGApps © 2020
+ ### FGApps ~ 2020

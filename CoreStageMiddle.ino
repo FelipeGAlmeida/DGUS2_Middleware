@@ -7,7 +7,7 @@
  *  cate with DWIN DGUS2 LCMs.                                       *
  *                                                                   *
  *            Developed/Written by: Felipe G. Almeida                * 
- *                    AGTechnologies © 2020                          *
+ *                       FGApps © 2020                               *
  *                                                                   *
  *********************************************************************
  *                      Core Stages functions                        *
