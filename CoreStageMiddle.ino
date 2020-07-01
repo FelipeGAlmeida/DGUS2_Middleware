@@ -7,7 +7,7 @@
  *  cate with DWIN DGUS2 LCMs.                                       *
  *                                                                   *
  *            Developed/Written by: Felipe G. Almeida                * 
- *                       FGApps © 2020                               *
+ *                        FGApps © 2020                              *
  *                                                                   *
  *********************************************************************
  *                      Core Stages functions                        *
@@ -24,7 +24,7 @@ void headerStage(unsigned char* b_read, unsigned char* b_last, bool resp){
   
   case 0xA5: {
     if(*b_last == 0x5A){
-      next(resp, false);
+      next(resp);
     }
     break;
   }
@@ -46,7 +46,7 @@ void sizeStage(unsigned char* b_read, unsigned char* b_size, bool resp){
   if(resp) len_res = *b_read;           // Set the length of the current response
   else len_cmd = *b_read;               // Set the length of the current command
   
-  next(resp, false);
+  next(resp);
 }
 
  /*** Stage 2 - COMMAND ***/
@@ -58,7 +58,7 @@ void commandStage(unsigned char* b_read, unsigned char* b_size, bool resp){
     typ_res = *b_read;                  // Sets the current response command (0x83)
 
     if(typ_cmd == 0x81 || typ_cmd == 0x83){
-      next(resp, false);
+      next(resp);
     } else {
       resetRes("COMMAND");              //Non-valid response
       return;
@@ -70,7 +70,7 @@ void commandStage(unsigned char* b_read, unsigned char* b_size, bool resp){
   
     if(typ_cmd == 0x80 || typ_cmd == 0x81 ||
         typ_cmd == 0x82 || typ_cmd == 0x83){
-      next(resp, false);
+      next(resp);
     } else {
       resetCmd("COMMAND");              // Non-valid command
       return;
@@ -105,7 +105,7 @@ void regVpStage(unsigned char* b_read, unsigned char* b_size, bool resp){
       sendKnownBytes(resp);             // Send Header and Response Length 
       sendVPBytes(resp);                // Send the VP or REG
       
-      next(resp, false);
+      next(resp);
     }
   } else {                              // Command scope
     
@@ -115,7 +115,7 @@ void regVpStage(unsigned char* b_read, unsigned char* b_size, bool resp){
       sendKnownBytes(resp);             // Send Header and Command Length
       sendVPBytes(resp);                // Send the VP
       
-      next(resp, false);
+      next(resp);
       
     } else if(typ_cmd == 0x82 || typ_cmd == 0x83){
       
@@ -129,7 +129,7 @@ void regVpStage(unsigned char* b_read, unsigned char* b_size, bool resp){
         sendKnownBytes(resp);            // Send Header and Command Length
         sendVPBytes(resp);               // Send the VP
         
-        next(resp, false);
+        next(resp);
       }
     } else {
       resetCmd("REG-VP");                // Non-valid command

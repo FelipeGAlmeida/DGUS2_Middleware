@@ -7,7 +7,7 @@
  *  cate with DWIN DGUS2 LCMs.                                       *
  *                                                                   *
  *            Developed/Written by: Felipe G. Almeida                * 
- *                       FGApps © 2020                               *
+ *                        FGApps © 2020                              *
  *                                                                   *
  *********************************************************************
  *                        Conversion core                            *
@@ -29,10 +29,10 @@ void analyseCommands(bool resp, unsigned char* stage){
   
   if(Serial1.available() && !resp){           // Command from Proculos
     cb_read = Serial1.read();
-    cb_read = convertSerialInput(cb_read);
+    //cb_read = convertSerialInput(cb_read);  // DEBUG/Test only (change input to Serial.read())
   } else if(Serial2.available() && resp){     // Response from DGUS2
     rb_read = Serial2.read(); 
-    rb_read = convertSerialInput(rb_read);
+    //rb_read = convertSerialInput(rb_read);  // DEGUB/Test only (change input to Serial.read())
   } else {                                    //No data available
     return;
   }
